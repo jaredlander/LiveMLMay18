@@ -3,7 +3,7 @@
 Live Training
 =============
 
-This is an empty repo for to initialize an R project for training courses organized by [Lander Analytics](www.landeranalytics.com).
+This is an empty repo for to initialize an R project for training courses organized by [O'Reilly](https://www.safaribooksonline.com/live-training/courses/machine-learning-with-r/0636920176060/).
 
 Packages
 ========
@@ -28,17 +28,17 @@ Making use of RStudio projects greatly improves the user experience. To facilita
 newProject <- usethis::use_course('https://github.com/jaredlander/LiveMLMay18/archive/master.zip')
 ```
 
-After that runs successfully you will have a new folder holding the R project that looks like this (the name may be different).
+After that runs successfully you will have a new folder holding the R project that looks like this (the name in the image may be different).
 
 <img src="images/ProjectFolder.png" width="859" />
 
-If a new project did not open automatically, either double-click the file called LearningR.Rproj or run the following line of code.
+If a new project did not open automatically, either double-click the file called LiveMLMay18.Rproj (the name in the image might be different) or run the following line of code.
 
 ``` r
 rstudioapi::openProject(newProject)
 ```
 
-After running this code, or double-clicking that file, you will be in an RStudio Project called LearningR. You can see this in the top right of RStudio.
+After running this code, or double-clicking that file, you will be in an RStudio Project called LiveMLMay18. You can see this in the top right of RStudio.
 
 <img src="images/ProjectCorner.png" width="225" />
 
@@ -49,10 +49,10 @@ Alternatively, if you use git then please clone this repo then open it as an [RS
 
 ``` sh
 # if using SSH
-git clone git@github.com:jaredlander/LearningR.git
+git clone git@github.com:jaredlander/LiveMLMay18.git
 
 # if using https
-git clone https://github.com/jaredlander/LearningR.git
+git clone https://github.com/jaredlander/LiveMLMay18.git
 ```
 
 Data
