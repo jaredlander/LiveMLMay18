@@ -52,3 +52,15 @@ coefplot(value2, sort='magnitude', lambda=20000000)
 coefplot(value2, sort='magnitude', lambda=2000000)
 coefplot(value2, sort='magnitude', lambda=200000)
 coefplot(value2, sort='magnitude', lambda=100000)
+
+animation::cv.ani(k=10)
+
+value3 <- cv.glmnet(x=lotsX, y=lotsY, family='gaussian', nfolds=5)
+plot(value3)
+value3$lambda.min
+value3$lambda.1se
+coefpath(value3)
+
+coefplot(value3, sort='magnitude', lambda='lambda.min')
+coefplot(value3, sort='magnitude', lambda='lambda.1se')
+coefplot(value3, sort='magnitude', lambda='lambda.1se', plot=FALSE)
