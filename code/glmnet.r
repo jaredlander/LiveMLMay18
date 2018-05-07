@@ -64,3 +64,16 @@ coefpath(value3)
 coefplot(value3, sort='magnitude', lambda='lambda.min')
 coefplot(value3, sort='magnitude', lambda='lambda.1se')
 coefplot(value3, sort='magnitude', lambda='lambda.1se', plot=FALSE)
+
+value4 <- cv.glmnet(x=lotsX, y=lotsY, family='gaussian', nfolds=5, alpha=1)
+
+value5 <- cv.glmnet(x=lotsX, y=lotsY, family='gaussian', nfolds=5, alpha=0)
+value5$lambda.min
+plot(value5)
+coefpath(value5)
+coefpath(value4)
+
+value6 <- cv.glmnet(x=lotsX, y=lotsY, family='gaussian', nfolds=5, alpha=0.3)
+coefpath(value6)
+
+coefplot(value6, sort='magnitude', lambda='lambda.1se')
