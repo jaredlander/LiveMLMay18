@@ -86,3 +86,5 @@ value6$lambda
 
 lotsPreds6 <- predict(value6, newx=lotsX_new, s='lambda.1se')
 head(lotsPreds6)
+
+set.seed(1234)
