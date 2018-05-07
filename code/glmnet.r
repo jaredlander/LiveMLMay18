@@ -77,3 +77,12 @@ value6 <- cv.glmnet(x=lotsX, y=lotsY, family='gaussian', nfolds=5, alpha=0.3)
 coefpath(value6)
 
 coefplot(value6, sort='magnitude', lambda='lambda.1se')
+
+lotsNew <- readRDS('data/manhattan_Test.rds')
+
+lotsX_new <- build.x(valueFormula, data=lotsNew, contrasts=FALSE, sparse=TRUE)
+
+value6$lambda
+
+lotsPreds6 <- predict(value6, newx=lotsX_new, s='lambda.1se')
+head(lotsPreds6)
