@@ -111,3 +111,38 @@ xg7 <- xgb.train(
     print_every_n=10,
     early_stopping_rounds=70
 )
+
+xgb.plot.importance(
+    xgb.importance(
+        xg7, feature_names=colnames(lotsX_train)
+    )
+)
+
+xg8 <- xgb.train(
+    data=xgTrain,
+    objective='binary:logistic',
+    eval_metric='logloss',
+    booster='gblinear',
+    nrounds=1000,
+    watchlist=list(train=xgTrain, validate=xgVal),
+    print_every_n=10,
+    early_stopping_rounds=70
+)
+
+coefplot(xg8, sort='magnitude')
+
+xg9 <- xgb.train(
+    data=xgTrain,
+    objective='binary:logistic',
+    eval_metric='logloss',
+    booster='gblinear',
+    nrounds=1000,
+    watchlist=list(train=xgTrain, validate=xgVal),
+    print_every_n=10,
+    early_stopping_rounds=70,
+    alpha=100000, lambda=250
+)
+coefplot(xg9, sort='magnitude')
+
+dygraph(xg9$evaluation_log)
+
