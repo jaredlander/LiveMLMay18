@@ -35,3 +35,43 @@ xgTrain <- xgb.DMatrix(data=lotsX_train,
 xgTrain
 xgVal <- xgb.DMatrix(data=lotsX_val,
                      label=lotsY_val)
+
+
+xg1 <- xgb.train(
+    data=xgTrain,
+    objective='binary:logistic',
+    eval_metric='logloss',
+    booster='gbtree',
+    nrounds=1
+)
+
+xgb.plot.multi.trees(xg1, feature_names=colnames(lotsX_train))
+
+xg2 <- xgb.train(
+    data=xgTrain,
+    objective='binary:logistic',
+    eval_metric='logloss',
+    booster='gbtree',
+    nrounds=1,
+    watchlist=list(train=xgTrain)
+)
+
+xg3 <- xgb.train(
+    data=xgTrain,
+    objective='binary:logistic',
+    eval_metric='logloss',
+    booster='gbtree',
+    nrounds=100,
+    watchlist=list(train=xgTrain),
+    print_every_n=1
+)
+
+xg4 <- xgb.train(
+    data=xgTrain,
+    objective='binary:logistic',
+    eval_metric='logloss',
+    booster='gbtree',
+    nrounds=300,
+    watchlist=list(train=xgTrain),
+    print_every_n=1
+)
