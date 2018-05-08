@@ -146,3 +146,104 @@ coefplot(xg9, sort='magnitude')
 
 dygraph(xg9$evaluation_log)
 
+xg10 <- xgb.train(
+    data=xgTrain,
+    objective='binary:logistic',
+    eval_metric='logloss',
+    booster='gbtree',
+    nrounds=1000,
+    watchlist=list(train=xgTrain, validate=xgVal),
+    print_every_n=10,
+    early_stopping_rounds=70,
+    max_depth=8
+)
+
+xg11 <- xgb.train(
+    data=xgTrain,
+    objective='binary:logistic',
+    eval_metric='logloss',
+    booster='gbtree',
+    nrounds=2500,
+    watchlist=list(train=xgTrain, validate=xgVal),
+    print_every_n=10,
+    early_stopping_rounds=70,
+    max_depth=8, eta=0.1
+)
+
+xg12 <- xgb.train(
+    data=xgTrain,
+    objective='binary:logistic',
+    eval_metric='logloss',
+    booster='gbtree',
+    nrounds=2500, # number of boosting iterations
+    watchlist=list(train=xgTrain, validate=xgVal),
+    print_every_n=10,
+    early_stopping_rounds=70,
+    max_depth=8, # controls complexity of the individual trees
+    eta=0.1, # controls learning rate
+    subsample=0.5 # randomly samples half the rows at each tree
+)
+
+xg13 <- xgb.train(
+    data=xgTrain,
+    objective='binary:logistic',
+    eval_metric='logloss',
+    booster='gbtree',
+    nrounds=2500, # number of boosting iterations
+    watchlist=list(train=xgTrain, validate=xgVal),
+    print_every_n=10,
+    early_stopping_rounds=70,
+    max_depth=8, # controls complexity of the individual trees
+    eta=0.1, # controls learning rate
+    subsample=0.5, # randomly samples half the rows at each tree
+    col_subsample=0.5
+)
+
+xg14 <- xgb.train(
+    data=xgTrain,
+    objective='binary:logistic',
+    eval_metric='logloss',
+    booster='gbtree',
+    nrounds=1, # number of boosting iterations
+    watchlist=list(train=xgTrain, validate=xgVal),
+    print_every_n=10,
+    early_stopping_rounds=70,
+    max_depth=8, # controls complexity of the individual trees
+    eta=0.1, # controls learning rate
+    subsample=0.5, # randomly samples half the rows at each tree
+    col_subsample=0.5,
+    num_parallel_tree=100
+)
+
+xg15 <- xgb.train(
+    data=xgTrain,
+    objective='binary:logistic',
+    eval_metric='logloss',
+    booster='gbtree',
+    nrounds=100, # number of boosting iterations
+    watchlist=list(train=xgTrain, validate=xgVal),
+    print_every_n=1,
+    early_stopping_rounds=70,
+    max_depth=8, # controls complexity of the individual trees
+    eta=0.1, # controls learning rate
+    subsample=0.5, # randomly samples half the rows at each tree
+    col_subsample=0.5,
+    num_parallel_tree=20
+)
+
+xg16 <- xgb.train(
+    data=xgTrain,
+    objective='binary:logistic',
+    eval_metric='logloss',
+    booster='gbtree',
+    nrounds=100, # number of boosting iterations
+    watchlist=list(train=xgTrain, validate=xgVal),
+    print_every_n=1,
+    early_stopping_rounds=70,
+    max_depth=8, # controls complexity of the individual trees
+    eta=0.1, # controls learning rate
+    subsample=0.5, # randomly samples half the rows at each tree
+    col_subsample=0.5, # randomly choose columns to use
+    num_parallel_tree=20, # fit trees in parallel to make a boosted forest
+    nthread=4 # number of parallel threads to use
+)
