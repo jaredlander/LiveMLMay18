@@ -23,3 +23,15 @@ histFormula <- HistoricDistrict ~ FireService +
 lotsX_train <- build.x(histFormula, data=lotsTrain, contrasts=FALSE, sparse=TRUE)
 lotsY_train <- build.y(histFormula, data=lotsTrain) %>% as.integer() - 1
 lotsY_train %>% head(n=20)
+
+lotsX_test <- build.x(histFormula, data=lotsTest, contrasts=FALSE, sparse=TRUE)
+lotsY_test <- build.y(histFormula, data=lotsTest) %>% as.integer() - 1
+
+lotsX_val <- build.x(histFormula, data=lotsVal, contrasts=FALSE, sparse=TRUE)
+lotsY_val <- build.y(histFormula, data=lotsVal) %>% as.integer() - 1
+
+xgTrain <- xgb.DMatrix(data=lotsX_train,
+                       label=lotsY_train)
+xgTrain
+xgVal <- xgb.DMatrix(data=lotsX_val,
+                     label=lotsY_val)
